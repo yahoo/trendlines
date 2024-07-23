@@ -1,0 +1,14 @@
+shared:
+  sourcePaths:
+    - screwdriver.yaml
+  settings:
+    email: eliyar.asgarieh@yahooinc.com
+
+jobs:
+  validate-semgrep:
+       requires: [~pr, ~commit]
+       template: ProdSec/validate_semgrep@stable
+       image: alma8
+       environment:
+           YAHOO_SEMGREP_ENFORCING: False 
+           SEMGREP_LOGLEVEL: debug
